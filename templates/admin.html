@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fit Society - Yönetim Paneli</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Fit Society - Müşteri Adayları (Leads)</h2>
+            <a href="/" class="btn btn-outline-primary">Ana Sayfaya Dön</a>
+        </div>
+
+        <div class="card shadow-sm border-0 p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Tarih</th>
+                            <th>İsim</th>
+                            <th>Telefon</th>
+                            <th>İlgi Alanı</th>
+                            <th>Mesaj</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for lead in leads %}
+                        <tr>
+                            <td>{{ lead.id }}</td>
+                            <td>{{ lead.tarih }}</td>
+                            <td class="fw-bold">{{ lead.isim }}</td>
+                            <td><a href="tel:{{ lead.telefon }}">{{ lead.telefon }}</a></td>
+                            <td><span class="badge bg-info text-dark">{{ lead.ilgi_alani }}</span></td>
+                            <td>{{ lead.mesaj }}</td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="6" class="text-center text-muted py-4">Henüz kayıtlı müşteri adayı bulunmuyor.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
